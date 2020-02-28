@@ -53,6 +53,8 @@ public class JavaMapTest {
 		testGet.put("key","value");
 		assertEquals(testGet.get("key"),"value");
 		
+		
+		
 	}
 	
 	@Test
