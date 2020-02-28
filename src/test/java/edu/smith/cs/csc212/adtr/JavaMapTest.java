@@ -52,18 +52,21 @@ public class JavaMapTest {
 		//get the value of the key
 		testGet.put("key","value");
 		assertEquals(testGet.get("key"),"value");
-		
-		
-		
+
 	}
 	
-	@Test
-	public void testSize() {
-		
-	}
-	
+	//Yilin
 	@Test
 	public void testRemove() {
+		MapADT<String, String> testRemove = new JavaMap<>();
+		testRemove.put("key","value");
+		testRemove.put("key","anothervalue");
+		testRemove.put("anotherkey","value");
+		testRemove.put("key","value");
 		
+		testRemove.remove("key");
+		System.out.print(testRemove.size());
+		assertEquals(testRemove.size(),1);
+
 	}
 }
