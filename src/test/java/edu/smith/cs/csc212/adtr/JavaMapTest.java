@@ -42,12 +42,17 @@ public class JavaMapTest {
 		assertEquals(testRepeatedPut.size(),2);
 		assertEquals(testRepeatedPut.get("key"),"anothervalue");
 	}
-	
+	//Yilin
 	@Test
 	public void testGet() {
 		MapADT<String, String> testGet = new JavaMap<>();
-		//
-		assertEquals(testGet.get("key"),null);
+		//get sth that doesn't exist in the map returns null
+		assertEquals(testGet.get("sth not in the map"),null);
+		
+		//get the value of the key
+		testGet.put("key","value");
+		assertEquals(testGet.get("key"),"value");
+		
 	}
 	
 	@Test
