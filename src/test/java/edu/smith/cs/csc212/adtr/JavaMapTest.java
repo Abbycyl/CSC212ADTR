@@ -15,10 +15,48 @@ public class JavaMapTest {
 		assertEquals(x, y);
 	}
 
+	//JJ
 	@Test
 	public void testEmpty() {
 		MapADT<String, String> empty = new JavaMap<>();
 		assertEquals(empty.size(), 0);
 		//Assert.assert
+	}
+	
+	//Yilin
+	@Test
+	public void testPutOne() {
+		MapADT<String, String> testPut = new JavaMap<>();
+		testPut.put("key", "value");
+		assertEquals(testPut.size(),1);
+	}
+	
+	//Yilin
+	@Test
+	public void testRepeatedPut() {
+		MapADT<String, String> testRepeatedPut = new JavaMap<>();
+		testRepeatedPut.put("key", "value");
+		testRepeatedPut.put("anotherkey","value");
+		testRepeatedPut.put("key","value");
+		testRepeatedPut.put("key","anothervalue");
+		assertEquals(testRepeatedPut.size(),2);
+		assertEquals(testRepeatedPut.get("key"),"anothervalue");
+	}
+	
+	@Test
+	public void testGet() {
+		MapADT<String, String> testGet = new JavaMap<>();
+		//
+		assertEquals(testGet.get("key"),null);
+	}
+	
+	@Test
+	public void testSize() {
+		
+	}
+	
+	@Test
+	public void testRemove() {
+		
 	}
 }
