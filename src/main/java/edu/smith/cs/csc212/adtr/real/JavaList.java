@@ -78,12 +78,11 @@ public class JavaList<T> extends ListADT<T> {
 	public void addFront(T value) {
 		inner.add(0, value);	
 	}
-
+	
+	//got rid of the if statement because list allows repeated items
 	@Override
 	public void addBack(T value) {
-		if (!inner.contains(value)) {
 			inner.add(value);		
-		}
 	}
 
 	@Override
