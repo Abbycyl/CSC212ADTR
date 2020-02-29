@@ -3,6 +3,7 @@ package edu.smith.cs.csc212.adtr;
 import org.junit.Assert;
 import org.junit.Test;
 
+import edu.smith.cs.csc212.adtr.errors.EmptyListError;
 import edu.smith.cs.csc212.adtr.real.JavaList;
 import edu.smith.cs.csc212.adtr.real.JavaMap;
 import edu.smith.cs.csc212.adtr.real.JavaSet;
@@ -25,6 +26,35 @@ public class ChallengesTest {
 		expected.insert("C");
 		Assert.assertEquals(expected, Challenges.union(left, right));
 	}
+	
+	@Test
+	//swu75
+	public void testUnionOneEmptyList() {
+		SetADT<String> left = new JavaSet<>();
+		SetADT<String> right = new JavaSet<>();
+		left.insert("A");
+		left.insert("B");
+		
+		SetADT<String> expected = new JavaSet<>();
+		expected.insert("A");
+		expected.insert("B");
+		
+		Assert.assertEquals(expected, Challenges.union(left, right));
+	}
+	
+	@Test 
+	//Yilin
+	public void testUnionTwoEmptyList() {
+		SetADT<String> left = new JavaSet<>();
+		SetADT<String> right = new JavaSet<>();
+		
+		SetADT<String> expected = new JavaSet<>();
+		
+		Assert.assertEquals(expected, Challenges.union(left, right));
+		Assert.assertEquals(Challenges.union(left, right).size(),0);
+	}
+	
+	
 	
 	@Test
 	public void testIntersectionSimple() {
