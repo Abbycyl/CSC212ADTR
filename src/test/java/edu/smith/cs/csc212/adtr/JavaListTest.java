@@ -80,10 +80,19 @@ public class JavaListTest {
 		Assert.assertEquals("1", data.getIndex(2));
 		Assert.assertEquals(false, data.isEmpty());
 		data.addFront("-2");
+		Assert.assertEquals(4, data.size());
 		Assert.assertEquals("-1", data.getIndex(1));
 		Assert.assertEquals("-2", data.getIndex(0));
 		Assert.assertEquals("0", data.getIndex(2));
 		Assert.assertEquals("1", data.getIndex(3));
+		Assert.assertEquals(false, data.isEmpty());
+		data.addFront("-2");
+		Assert.assertEquals(5, data.size());
+		Assert.assertEquals("-2", data.getIndex(0));
+		Assert.assertEquals("-2", data.getIndex(1));
+		Assert.assertEquals("-1", data.getIndex(2));
+		Assert.assertEquals("0", data.getIndex(3));
+		Assert.assertEquals("1", data.getIndex(4));
 		Assert.assertEquals(false, data.isEmpty());
 	}
 	
@@ -201,29 +210,98 @@ public class JavaListTest {
 		Assert.assertEquals("1", data.getIndex(0));
 		Assert.assertEquals(false, data.isEmpty());
 		data.addBack("-2");
+		Assert.assertEquals(4, data.size());
 		Assert.assertEquals("-1", data.getIndex(2));
 		Assert.assertEquals("-2", data.getIndex(3));
 		Assert.assertEquals("0", data.getIndex(1));
 		Assert.assertEquals("1", data.getIndex(0));
+		Assert.assertEquals(false, data.isEmpty());
+		data.addBack("-2");
+		Assert.assertEquals(5, data.size());
+		Assert.assertEquals("-1", data.getIndex(2));
+		Assert.assertEquals("-2", data.getIndex(3));
+		Assert.assertEquals("0", data.getIndex(1));
+		Assert.assertEquals("1", data.getIndex(0));
+		Assert.assertEquals("-2", data.getIndex(4));
 		Assert.assertEquals(false, data.isEmpty());
 	}
 	
 	@Test
 	//swu75
 	public void testRemoveBack() {
+		ListADT<String> data = makeFullList();
+		data.removeBack();
+		Assert.assertEquals(3, data.size());
+		Assert.assertEquals("a", data.getIndex(0));
+		Assert.assertEquals("b", data.getIndex(1));
+		Assert.assertEquals("c", data.getIndex(2));
+		data.removeBack();
+		Assert.assertEquals(2, data.size());
+		Assert.assertEquals("a", data.getIndex(0));
+		Assert.assertEquals("b", data.getIndex(1));
+		data.removeBack();
+		Assert.assertEquals(1, data.size());
+		Assert.assertEquals("a", data.getIndex(0));
+		data.removeBack();
+		Assert.assertEquals(0, data.size());
 		
+	}
+	
+	
+	@Test(expected=EmptyListError.class)
+	//swu75
+	public void testRemoveBackEmptyList() {
+		ListADT<String> data = makeEmptyList();
+		data.removeBack();
 	}
 	
 	@Test
 	//swu75
 	public void testRemoveIndex() {
-		
+		ListADT<String> data = makeFullList();
+		data.removeIndex(0);
+		Assert.assertEquals(3, data.size());
+		Assert.assertEquals("b", data.getIndex(0));
+		Assert.assertEquals("c", data.getIndex(1));
+		Assert.assertEquals("d", data.getIndex(2));
+		data.removeIndex(0);
+		Assert.assertEquals(2, data.size());
+		Assert.assertEquals("c", data.getIndex(0));
+		Assert.assertEquals("d", data.getIndex(1));
+	}
+	
+	@Test(expected=EmptyListError.class)
+	//swu75
+	public void testRemoveIndexEmptyList() {
+		ListADT<String> data = makeEmptyList();
+		data.removeIndex(0);
 	}
 	
 	@Test
 	//swu75
 	public void testRemoveFront() {
-		
+		ListADT<String> data = makeFullList();
+		data.removeFront();
+		Assert.assertEquals(3, data.size());
+		Assert.assertEquals("b", data.getIndex(0));
+		Assert.assertEquals("c", data.getIndex(1));
+		Assert.assertEquals("d", data.getIndex(2));
+		data.removeFront();
+		Assert.assertEquals(2, data.size());
+		Assert.assertEquals("c", data.getIndex(0));
+		Assert.assertEquals("d", data.getIndex(1));
+		data.removeFront();
+		Assert.assertEquals(1, data.size());
+		Assert.assertEquals("d", data.getIndex(0));
+		data.removeFront();
+		Assert.assertEquals(0, data.size());
+	}
+	
+	@Test(expected=EmptyListError.class)
+	//swu75
+	public void testRemoveFrontEmptyList() {
+		ListADT<String> data = makeEmptyList();
+		data.removeFront();
 	}
 	
 }
