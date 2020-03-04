@@ -72,6 +72,47 @@ public class ChallengesTest {
 	}
 	
 	@Test
+	//swu75
+	public void testIntersectionOneEmptyList() {
+		SetADT<String> left = new JavaSet<>();
+		SetADT<String> right = new JavaSet<>();
+		
+		left.insert("A");
+		left.insert("B");
+		
+		SetADT<String> expected = new JavaSet<>();
+		Assert.assertEquals(expected, Challenges.intersection(left, right));
+	}
+	
+	@Test
+	//swu75
+	public void testIntersectionTwoEmptyList() {
+		SetADT<String> left = new JavaSet<>();
+		SetADT<String> right = new JavaSet<>();
+		
+		SetADT<String> expected = new JavaSet<>();
+
+		Assert.assertEquals(expected, Challenges.intersection(left, right));
+	}
+	
+	@Test
+	//swu75
+	public void testIntersectionTwoIdenticalList() {
+		SetADT<String> left = new JavaSet<>();
+		SetADT<String> right = new JavaSet<>();
+		
+		left.insert("A");
+		left.insert("B");
+		right.insert("A");
+		right.insert("B");
+		
+		SetADT<String> expected = new JavaSet<>();
+		expected.insert("A");
+		expected.insert("B");
+		Assert.assertEquals(expected, Challenges.intersection(left, right));
+	}
+	
+	@Test
 	public void testWordCountSimple() {
 		ListADT<String> example = new JavaList<>();
 		for (String word : new String[] {"a", "b", "a", "b", "c", "d"}) {
@@ -85,5 +126,9 @@ public class ChallengesTest {
 		
 		Assert.assertEquals(expected, Challenges.wordCount(example));
 	}
+	
+	
+	
+	
 
 }
